@@ -16,6 +16,8 @@ import { UserDto } from './dtos/user.dto';
 import { UsersService } from './users.service';
 
 @Controller('auth')
+// @UseInterceptors(new SerializeInterceptor(UserDto))
+@Serialize(UserDto) // this is a class level decorator ( custom interceptor)
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
@@ -24,8 +26,6 @@ export class UsersController {
     this.usersService.create(body.email, body.password);
   }
 
-  // @UseInterceptors(new SerializeInterceptor(UserDto))
-  @Serialize(UserDto)
   @Get('/:id')
   async findUser(@Param('id') id: string) {
     const user = await this.usersService.findOne(parseInt(id));
