@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  Injectable,
   NotFoundException,
   Param,
   Patch,
@@ -15,6 +16,7 @@ import { UpdateUserDto } from './dtos/update-user.dto';
 import { UserDto } from './dtos/user.dto';
 import { UsersService } from './users.service';
 
+@Injectable()
 @Controller('auth')
 // @UseInterceptors(new SerializeInterceptor(UserDto))
 @Serialize(UserDto) // this is a class level decorator ( custom interceptor)
