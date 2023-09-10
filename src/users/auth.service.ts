@@ -1,5 +1,10 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
+import { scrypt as _scrypt, randomBytes } from 'crypto';
+import { promisify } from 'util';
 import { UsersService } from './users.service';
+
+const scrypt = promisify(_scrypt);
+//  promisify is a function that takes a function that uses a callback and returns a promise
 
 @Injectable()
 export class AuthService {
@@ -12,9 +17,17 @@ export class AuthService {
       throw new BadRequestException('email in use');
     }
     // 2.hash the users password
+    // 2.1 generate a salt
+    const salt = randomBytes(8).toString('hex');
 
+    // 2.2 hash the password with the salt
+    const hash = (await scrypt(password, salt, 32)) as Buffer; // as Buffer is a type assertion to tell typescript that we know what we are doing and we are sure that the result of scrypt is a buffer, Buffer is a type that is used to represent a sequence of binary data.
+    // 2.3join the hashed result and salt together
+    const result = salt + '.' + hash.toString('hex');
     // 3.create a new user and save it
+    const user = await this.usersService.create(email, result);
     // 4.return the user
+    return user;
   }
 
   signin(email: string, password: string) {}
