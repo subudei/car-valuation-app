@@ -3,19 +3,35 @@ POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-    "email": "auth_test5@mail.com",
-    "password": "password123"
+    "email": "auth_trail@mail.com",
+    "password": "password12345"
 }
 
-### Login
+### Sign Out
+POST http://localhost:3000/auth/signout 
 
+### Login
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+    "email": "cookie_test@mail.com",
+    "password": "password12345"
+}
+
+
+### Sign in as an existing user
 POST http://localhost:3000/auth/signin
 Content-Type: application/json
 
 {
-    "email": "auth_test5@mail.com",
-    "password": "password123"
+    "email": "cookie_test@mail.com",
+    "password": "password12345"
 }
+
+### Get current user info
+GET http://localhost:3000/auth/active
+
 ### Find User by Id
 GET http://localhost:3000/auth/1
 
