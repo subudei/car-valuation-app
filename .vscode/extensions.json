@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "bradlc.vscode-tailwindcss",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "firsttris.vscode-jest-runner",
+    "nrwl.angular-console",
+    "steoates.autoimport",
+    "streetsidesoftware.code-spell-checker-norwegian-bokmal",
+    "streetsidesoftware.code-spell-checker"
+  ]
+}
