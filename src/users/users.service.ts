@@ -21,7 +21,7 @@ export class UsersService {
 
   find(email: string) {
     return this.repo.find({ where: { email } });
-  }
+  } // 'where' is a query builder method that allows us to filter the results of the query, can't use email directly because it's not a column in the database, it's a property of the user entity, so we have to use where to tell typeorm to look for the email property in the user entity
 
   async update(id: number, attrs: Partial<User>) {
     const user = await this.findOne(id);

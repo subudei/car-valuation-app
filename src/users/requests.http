@@ -3,8 +3,8 @@ POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-    "email": "auth_trail@mail.com",
-    "password": "password12345"
+    "email": "somebody@mail.com",
+    "password": "121212"
 }
 
 ### Sign Out
@@ -33,14 +33,16 @@ Content-Type: application/json
 GET http://localhost:3000/auth/active
 
 ### Find User by Id
-GET http://localhost:3000/auth/1
+GET http://localhost:3000/auth/2
 
+### Find All Users
+GET http://localhost:3000/auth
 
 ### Find All Users with email
 GET http://localhost:3000/auth?email=test2@mail.com
 
 ### Delete User by Id
-DELETE http://localhost:3000/auth/3
+DELETE http://localhost:3000/auth/9
 
 ### Update User 
 PATCH  http://localhost:3000/auth/1
